@@ -60,7 +60,7 @@
         <tr th:each="movie : ${movieList}">
             <th scope="row" th:text="${movie.id}">id</th>
             <td th:text="${movie.title}">Title</td>
-            <td>
+            <td class="text-start">
                 <ul>
                     <li th:text="'Genre: '+ ${movie.genre}">genre</li>
                     <li th:text="'Running time: '+ ${movie.running_time}">running time</li>

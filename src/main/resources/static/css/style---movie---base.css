@@ -16,15 +16,16 @@
       }
 
       img {
-        height: 25%;
-        width: 25%;
+        height: 100%;
+        width: 100%;
       }
-
+/*
       tr td:nth-child(4):hover img {
         position: absolute;
-
+        transform: scale(0.1);
         transform: translate(-50%, -50%);
       }
+      */
       section {
         border-radius: 20px;
       }

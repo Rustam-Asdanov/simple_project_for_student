@@ -14,6 +14,7 @@
           #23a6d5,
           #23d5ab
         );
+        font-family: "The Nautigal", cursive;
         background-size: 400% 400%;
         background-attachment: fixed;
         animation-name: body_image;
@@ -35,12 +36,11 @@
       }
 
       .text-spec {
-        font-family: "The Nautigal", cursive;
         font-size: 2rem;
       }
 
-      .text-spect-font{
-        font-family: "The Nautigal", cursive;
+      img{
+        border-radius: 20px;
       }
 
       .flip-card {

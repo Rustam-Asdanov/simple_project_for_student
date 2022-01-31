@@ -54,6 +54,7 @@
           th:object="${movie}"
           enctype="multipart/form-data"
           novalidate>
+        <input type="hidden" th:field="*{id}" class="d-none">
         <!-- Title -->
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Title</label>
@@ -66,7 +67,7 @@
                     required
             />
             <div class="valid-feedback">Looks good!</div>
-            <div class="valid-feedback">Input title!</div>
+            <div class="invalid-feedback">Input title!</div>
         </div>
         <!-- Genre -->
         <div class="col-md-4">
@@ -186,7 +187,7 @@
         </div>
         <hr />
         <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">Save Movie</button>
         </div>
     </form>
     <script th:inline="javascript">

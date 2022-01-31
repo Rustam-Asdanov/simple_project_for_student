@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,9 +18,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
     <link rel="stylesheet" href="/css/style---movies.css">
+
+    <script>
+        function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          var reader = new FileReader();
+          reader.onloadend = function () {
+            callback(reader.result);
+          };
+          reader.readAsDataURL(xhr.response);
+        };
+        xhr.open("GET", url);
+        xhr.responseType = "blob";
+        xhr.send();
+      }
+
+      let imageCounter = 0;
+    </script>
 </head>
 <body>
-<h2 class="text-warning text-center text-spec">Scaletto Movies</h2>
+<h2 class="text-warning text-center">Scaletto Movies</h2>
 <nav class="navbar navbar-expand-lg navbar-light bg-light container">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -72,21 +90,22 @@
         class="row container justify-content-center w-100 py-3 px-4 bg-dark"
 >
     <section class="row w-100 bg-danger justify-content-around py-2">
-        <div class="flip-card col-sm-6 col-md-3">
+        <div class="flip-card col-sm-6 col-md-3" th:each="movie : ${movieList}">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <img
-                            src="img_avatar.png"
-                            alt="Avatar"
+                            class="pic"
+                            alt="${movie.posterName}"
                             style="width: 300px; height: 300px"
                     />
                 </div>
                 <div class="flip-card-back">
-                    <h1>John Doe</h1>
+                    <h3 th:text="${movie.title}">Title</h3>
                     <hr />
                     <div class="h-50">
-                        <p>Architect & Engineer</p>
-                        <p>We love that guy</p>
+                        <p th:text="${movie.genre}">genre</p>
+                        <p th:text="${movie.running_time}">running time</p>
+                        <p th:text="${movie.starring}">starring</p>
                     </div>
 
                     <hr />
@@ -94,6 +113,19 @@
                         <a href="" type="button" class="btn btn-secondary" style="transform: translate(0,-25%);">More</a>
                     </div>
                 </div>
+
+                <script th:inline="javascript">
+                  /*<![CDATA[*/
+
+                  var pictureName =
+                    /*[[${movie.poster_name}]]*/
+                    /*]]>*/
+
+                    toDataURL("/movie_poster/getPoster/" + pictureName, function (dataUrl) {
+                      document.getElementsByClassName("pic")[imageCounter++].src =
+                        dataUrl;
+                    });
+                </script>
             </div>
         </div>
     </section>

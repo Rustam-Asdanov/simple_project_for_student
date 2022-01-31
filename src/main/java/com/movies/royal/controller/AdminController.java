@@ -28,7 +28,7 @@ public class AdminController {
 
     @GetMapping("/getMovieBase")
     public String getMovieBase(Model model){
-        model.addAttribute("movieList",null);
+        model.addAttribute("movieList",movieService.getMovieList());
         return "page---movie---base";
     }
 
@@ -43,15 +43,18 @@ public class AdminController {
 
     @GetMapping("/updateMovie/{id}")
     public String updateMovie(
-            @PathVariable("id") long id
+            @PathVariable("id") long id,
+            Model model
     ){
-        return "";
+        model.addAttribute("movie",movieService.getMovieById(id));
+        return "page---movie---add";
     }
 
     @GetMapping("/deleteMovie/{id}")
     public String deleteMovie(
             @PathVariable("id") long id
     ){
-        return "redirect:/admin/getMovieBase";
+        movieService.deleteMovieById(id);
+        return "redirect:/admin_page/getMovieBase";
     }
 }
