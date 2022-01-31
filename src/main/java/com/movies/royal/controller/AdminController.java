@@ -5,10 +5,7 @@ import com.movies.royal.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,7 +39,16 @@ public class AdminController {
     }
 
     @GetMapping("/updateMovie/{id}")
-    public String updateMovie(){
+    public String updateMovie(
+            @PathVariable("id") long id
+    ){
         return "";
+    }
+
+    @GetMapping("/deleteMovie/{id}")
+    public String deleteMovie(
+            @PathVariable("id") long id
+    ){
+        return "redirect:/admin/getMovieBase";
     }
 }

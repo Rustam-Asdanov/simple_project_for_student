@@ -57,26 +57,36 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
+        <tr th:each="movie : ${movieList}">
+            <th scope="row" th:text="${movie.id}">id</th>
+            <td th:text="${movie.title}">Title</td>
+            <td>
+                <ul>
+                    <li th:text="'Genre: '+ ${movie.genre}">genre</li>
+                    <li th:text="'Running time: '+ ${movie.running_time}">running time</li>
+                    <li th:text="'Directed by: '+ ${movie.directed_by}">directed by</li>
+                    <li th:text="'Produced by: '+ ${movie.produced_by}">produced by</li>
+                    <li th:text="'Starring: '+ ${movie.starring}">starring</li>
+                    <li th:text="'Description: '+ ${movie.description}">description</li>
+                    <li th:text="'Trailer link: '+ ${movie.trailer_link}">trailer link</li>
+                </ul>
+            </td>
             <td class="w-25">
-                <img class="pic" alt="" />
+                <img class="pic" alt="${movie.poster_name}" />
             </td>
             <td class="w-25 text-center">
-                <a th:href="@{}" type="button" class="btn btn-success px-4">Edit</a>
-                <a th:href="@{}" type="button" class="btn btn-danger px-4">Delete</a>
+                <a th:href="@{/admin_page/updateMovie/{id}(id=${movie.id})}" type="button" class="btn btn-success px-4">Edit</a>
+                <a th:href="@{/admin_page/deleteMovie/{id}(id=${movie.id})}" type="button" class="btn btn-danger px-4">Delete</a>
             </td>
 
             <script th:inline="javascript">
               /*<![CDATA[*/
 
               var pictureName =
-                /*[[${elem.foodImage}]]*/
+                /*[[${movie.poster_name}]]*/
                 /*]]>*/
 
-                toDataURL("/foodRest/image/" + pictureName, function (dataUrl) {
+                toDataURL("/movie_poster/getPoster/" + pictureName, function (dataUrl) {
                   document.getElementsByClassName("pic")[imageCounter++].src =
                     dataUrl;
                 });
@@ -85,5 +95,10 @@
         </tbody>
     </table>
 </section>
+    <a type="button"
+       class="btn btn-warning"
+       id="go-back"
+       href="/admin"
+    ><</a>
 </body>
 </html>
