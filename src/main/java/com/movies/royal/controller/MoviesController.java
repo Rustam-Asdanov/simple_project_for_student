@@ -14,4 +14,5 @@ public class MoviesController {
         model.addAttribute("movieList",null);
         return "page---movies";
     }
+
 }
