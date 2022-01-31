@@ -10,6 +10,11 @@ import java.io.*;
 @RequestMapping("/movie_poster")
 public class ImageRestController {
 
+    private String image_save_dest = "C:\\Users\\Rustam\\Desktop\\" +
+            "Developia\\FINAL PROJECTS\\" +
+            "BACKEND PROJECT\\easy project\\" +
+            "royal\\image_base\\";
+
     @GetMapping(
             value = "/getPoster/{posterName}",
             produces = MediaType.IMAGE_JPEG_VALUE
@@ -22,10 +27,7 @@ public class ImageRestController {
         InputStream in;
         try {
             file = new File(
-                    "C:\\Users\\Rustam\\Desktop\\" +
-                            "Developia\\FINAL PROJECTS\\" +
-                            "BACKEND PROJECT\\easy project\\" +
-                            "royal\\image_base\\"+posterName);
+                    image_save_dest+posterName);
             in = new FileInputStream(file);
             return IOUtils.toByteArray(in);
         } catch (FileNotFoundException e) {

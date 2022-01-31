@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,8 +34,10 @@ public class AdminController {
 
     @PostMapping("/addMovie")
     public String addMovie(
-            @ModelAttribute("movie") Movie movie
-    ){
+            @ModelAttribute("movie") Movie movie,
+            @RequestParam("movie_poster")MultipartFile multipartFile
+            ){
+        movieService.saveMovie(movie,multipartFile);
         return "redirect:/admin_page/getMovieBase";
     }
 

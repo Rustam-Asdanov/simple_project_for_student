@@ -49,14 +49,17 @@
     <hr />
     <!-- Form -->
     <form class="row g-3 needs-validation"
-          action="/admin_page/add"
+          action="/admin_page/addMovie"
           method="POST"
+          th:object="${movie}"
+          enctype="multipart/form-data"
           novalidate>
         <!-- Title -->
         <div class="col-md-4">
             <label for="validationCustom01" class="form-label">Title</label>
             <input
                     type="text"
+                    th:field="*{title}"
                     class="form-control"
                     id="validationCustom01"
                     placeholder="Hotel Transylvania"
@@ -70,6 +73,7 @@
             <label for="validationCustom02" class="form-label">Genre</label>
             <input
                     type="text"
+                    th:field="*{genre}"
                     class="form-control"
                     id="validationCustom02"
                     placeholder="Comedy"
@@ -85,6 +89,7 @@
             >
             <input
                     type="text"
+                    th:field="*{running_time}"
                     class="form-control"
                     id="validationCustom03"
                     placeholder="90 mins"
@@ -98,6 +103,7 @@
             <label for="validationCustom04" class="form-label">Directed By</label>
             <input
                     type="text"
+                    th:field="*{directed_by}"
                     class="form-control"
                     id="validationCustom04"
                     placeholder="Jennifer Kluska, Derek Drymon"
@@ -111,6 +117,7 @@
             <label for="validationCustom05" class="form-label">Produced By</label>
             <input
                     type="text"
+                    th:field="*{produced_by}"
                     class="form-control"
                     id="validationCustom05"
                     placeholder="Alice Dewey Goldstone"
@@ -124,6 +131,7 @@
             <label for="validationCustom06" class="form-label">Starring</label>
             <input
                     type="text"
+                    th:field="*{starring}"
                     class="form-control"
                     id="validationCustom06"
                     placeholder="Selena Gomez, Adam Sandler"
@@ -137,6 +145,7 @@
             <label for="validationCustom07" class="form-label">Description</label>
             <textarea
                     type="text"
+                    th:field="*{description}"
                     class="form-control"
                     id="validationCustom07"
                     rows="6"
@@ -151,6 +160,7 @@
             <label for="validationCustom08" class="form-label">Poster</label>
             <input
                     type="file"
+                    name="movie_poster"
                     class="form-control"
                     id="validationCustom08"
                     required
@@ -165,6 +175,7 @@
             >
             <input
                     type="text"
+                    th:field="*{trailer_link}"
                     class="form-control"
                     id="validationCustom09"
                     placeholder="https://youtu.be/6suJohjIvfo"
@@ -181,11 +192,10 @@
     <script th:inline="javascript">
         /*<![CDATA[*/
 
-        var pictureName =
-          /*[[${elem.foodImage}]]*/
+        var pictureName = /*[[${movie.poster_name}]]*/
           /*]]>*/
 
-          toDataURL("/foodRest/image/" + pictureName, function (dataUrl) {
+          toDataURL("/movie_poster/getPoster/" + pictureName, function (dataUrl) {
             document.getElementsByClassName("pic")[imageCounter++].src =
               dataUrl;
           });
