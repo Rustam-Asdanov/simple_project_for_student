@@ -21,10 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("",true)
+                .defaultSuccessUrl("/",true)
                 .and()
                 .logout()
-                .logoutSuccessUrl("");
+                .logoutSuccessUrl("/");
     }
 
 }

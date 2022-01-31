@@ -7,7 +7,7 @@
       @import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap");
 
       body {
-        background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80");
+        background-image: url("/images/bg_base_movie.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -28,3 +28,24 @@
       section {
         border-radius: 20px;
       }
+
+      #go-back {
+          position: fixed;
+          top: 10%;
+          left: 1%;
+          height: 80%;
+          width: 30px;
+          font-size: xx-large;
+          text-align: center;
+          opacity: 0.4;
+          background-color: rgb(114 137 218);
+        }
+
+        #go-back span {
+          position: relative;
+          top: 45%;
+        }
+
+        #go-back:hover {
+          opacity: 0.8;
+        }

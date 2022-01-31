@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/royal-movies")
+@RequestMapping("/royal_movies")
 public class MoviesController {
 
     @GetMapping
