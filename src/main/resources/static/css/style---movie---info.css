@@ -1,0 +1,64 @@
+* {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap");
+
+      body {
+        background-image: url("bg_info_movie.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: "The Nautigal", cursive;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+
+      section {
+        position: relative;
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        border-radius: 20px;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      img.extra-img {
+        width: 50%;
+        height: 40%;
+        display: block;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #go-back {
+              position: fixed;
+              top: 10%;
+              left: 1%;
+              height: 80%;
+              width: 30px;
+              font-size: xx-large;
+              text-align: center;
+              opacity: 0.4;
+              background-color: rgb(114 137 218);
+            }
+
+            #go-back span {
+              position: relative;
+              top: 45%;
+            }
+
+            #go-back:hover {
+              opacity: 0.8;
+            }

@@ -22,9 +22,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     />
-    <title>Movie Base</title>
-    <link rel="stylesheet" href="/css/style---movie---base.css">
-
+    <title>Movie Info</title>
     <script>
       function toDataURL(url, callback) {
         var xhr = new XMLHttpRequest();
@@ -44,42 +42,69 @@
     </script>
 </head>
 <body>
-<section class="container p-3 my-5 bg-light">
-    <h2 class="bg-warning text-center p-2 rounded">Movie Base</h2>
-    <table class="table text-center align-middle">
-        <thead class="bg-secondary">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Poster</th>
-            <th scope="col">Operations</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="movie : ${movieList}">
-            <th scope="row" th:text="${movie.id}">id</th>
-            <td th:text="${movie.title}">Title</td>
-            <td class="text-start">
-                <ul>
-                    <li th:text="'Genre: '+ ${movie.genre}">genre</li>
-                    <li th:text="'Running time: '+ ${movie.running_time}">running time</li>
-                    <li th:text="'Directed by: '+ ${movie.directed_by}">directed by</li>
-                    <li th:text="'Produced by: '+ ${movie.produced_by}">produced by</li>
-                    <li th:text="'Starring: '+ ${movie.starring}">starring</li>
-                    <li th:text="'Description: '+ ${movie.description}">description</li>
-                    <li th:text="'Trailer link: '+ ${movie.trailer_link}">trailer link</li>
-                </ul>
-            </td>
-            <td class="w-25">
-                <img class="pic" alt="${movie.poster_name}" />
-            </td>
-            <td class="w-25 text-center">
-                <a th:href="@{/admin_page/updateMovie/{id}(id=${movie.id})}" type="button" class="btn btn-success px-4">Edit</a>
-                <a th:href="@{/admin_page/deleteMovie/{id}(id=${movie.id})}" type="button" class="btn btn-danger px-4">Delete</a>
-            </td>
-
-            <script th:inline="javascript">
+<section class="row p-3 my-5 bg-light" th:object="${movie}">
+      <span class="col-12 text-center bg-warning my-3 rounded-pill">
+        <h1>&#9733;&#9733;&#9733; <span th:text="*{title}">Title</span> &#9733;&#9733;&#9733;</h1>
+      </span>
+    <span class="col-12 col-sm-4 h-25 poster">
+        <img
+                class="img-thumbnail rounded pic"
+                th:alt="*{poster_name}"
+        />
+      </span>
+    <span class="col-12 col-sm-8">
+        <ul>
+          <li>
+            <hr />
+            <h3 th:text="'Genre: '+ *{genre}">Genre:</h3>
+    </li>
+    <li>
+        <hr />
+        <h3 th:text="'Running time: '+ *{running_time}">Running time:</h3>
+    </li>
+    <li>
+        <hr />
+        <h3 th:text="'Directed By: '+ *{directed_by}">Directed By:</h3>
+    </li>
+    <li>
+        <hr />
+        <h3 th:text="'Produced By: '+ *{produced_by}">Produced By:</h3>
+    </li>
+    <li>
+        <hr />
+        <h3 th:text="'Starring: '+ *{starring}">Starring:</h3>
+    </li>
+    </ul>
+    </span>
+    <hr />
+    <span class="col-12">
+        <h3>Description:</h3>
+        <p th:text="*{description}">description</p>
+      </span>
+    <hr />
+    <span class="col-12 col-sm-3 bg-dark" style="border-radius: 30px 0 0 30px">
+        <img
+                src="/images/movie_info_pop_corn.png"
+                class="extra-img img-thumbnail"
+                alt="pop_corn"
+        />
+      </span>
+    <span class="col-12 col-sm-6 bg-dark">
+        <iframe
+                style="width: 100%"
+                height="300"
+                th:src="*{trailer_link}"
+        >
+        </iframe>
+      </span>
+    <span class="col-12 col-sm-3 bg-dark" style="border-radius: 0 30px 30px 0">
+        <img
+                src="/images/movie_info_oscar.png"
+                class="extra-img"
+                alt="oscar"
+        />
+      </span>
+    <script th:inline="javascript">
               /*<![CDATA[*/
 
               var pictureName =
@@ -91,14 +116,10 @@
                     dataUrl;
                 });
             </script>
-        </tr>
-        </tbody>
-    </table>
 </section>
 
-<a href="/admin_page" class="btn" type="button" id="go-back">
+<a href="/royal_movies" class="btn" type="button" id="go-back">
     <span>&#60;</span>
 </a>
-
 </body>
 </html>
