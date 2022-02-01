@@ -28,6 +28,7 @@ public class MovieService {
 
     public void saveMovie(Movie movie, MultipartFile multipartFile) {
         movie.setPoster_name(multipartFile.getOriginalFilename());
+        movie.setRunning_time(movie.getRunning_time()+" minutes");
         movieRepository.save(movie);
 
         try {

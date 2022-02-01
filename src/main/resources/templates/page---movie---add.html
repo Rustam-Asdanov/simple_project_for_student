@@ -88,16 +88,19 @@
             <label for="validationCustom03" class="form-label"
             >Running time</label
             >
-            <input
-                    type="text"
-                    th:field="*{running_time}"
-                    class="form-control"
-                    id="validationCustom03"
-                    placeholder="90 mins"
-                    required
-            />
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">Input running time!</div>
+            <div class="input-group mb-3">
+                <input
+                        type="number"
+                        th:field="*{running_time}"
+                        class="form-control"
+                        id="validationCustom03"
+                        placeholder="90 mins"
+                        required
+                />
+                <span class="input-group-text" id="validationTooltipUsernamePrepend">min</span>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Input running time!</div>
+            </div>
         </div>
         <!-- Directed By -->
         <div class="col-md-4">
@@ -179,7 +182,7 @@
                     th:field="*{trailer_link}"
                     class="form-control"
                     id="validationCustom09"
-                    placeholder="https://youtu.be/6suJohjIvfo"
+                    placeholder="https://www.youtube.com/embed/6suJohjIvfo"
                     required
             />
             <div class="valid-feedback">Looks good!</div>

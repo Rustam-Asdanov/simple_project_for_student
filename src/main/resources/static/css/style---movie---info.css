@@ -7,7 +7,7 @@
       @import url("https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap");
 
       body {
-        background-image: url("bg_info_movie.jpg");
+        background-image: url("/images/bg_info_movie.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
